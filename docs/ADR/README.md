@@ -39,3 +39,4 @@
 | [0005](0005-sync-by-swapping-prompt-into-cloud-job-config.md) | クラウド側の job_config を土台に prompt だけ差し替えて同期する | Accepted |
 | [0006](0006-personal-information-policy.md) | 個人情報の取り扱い方針 | Accepted |
 | [0007](0007-new-routines-from-claude-code-with-minimal-tools.md) | 新規 routine は Claude Code から Default 環境・最小限のツールで作成する | Accepted |
+| [0008](0008-design-sources-around-egress-restrictions.md) | 情報源の指定は egress 制約を前提に GitHub 上のソースを優先する | Accepted |

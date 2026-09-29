@@ -24,6 +24,8 @@ docs/ADR/                      # 決定事項の記録 (Architecture Decision Re
 - **個人情報にあたる値をリポジトリに含める前に、必ず利用者に確認する（ADR 0006）。**
   例外は `vars.RECIPIENT_EMAIL` の odd@agraffe.info（公開済みと確認済み）。
   氏名・所属・他サービスの ID・URL など、迷ったら確認する側に倒す。確認結果は ADR か CHANGELOG に残す。
+- **prompt を書くときは egress 制約を前提にする（ADR 0008）。** 「実行環境の制約」節を置き、GitHub 上のソースを最優先、
+  ブロックされたドメインへの再試行禁止、本文未確認の記事への注記を指示する。
 - **クラウドへの反映は `README.md` の「更新の流れ」に従う。**
   routine の `job_config` は部分更新できないため、`RemoteTrigger get` の結果を
   `--current` に渡して prompt だけ差し替える。`*.current.json` はコミットしない。
@@ -42,3 +44,4 @@ docs/ADR/                      # 決定事項の記録 (Architecture Decision Re
 |---|---|---|
 | weekly-ai-digest | 毎週金曜 17:00 JST (`0 8 * * 5` UTC) | 稼働中。Cowork 由来のため git clone なし |
 | weekly-python-rust-digest | 毎週月曜 08:00 JST (`0 23 * * 0` UTC) | 稼働中。Claude Code から作成（ADR 0007） |
+| weekly-security-digest | 毎週金曜 21:00 JST (`0 12 * * 5` UTC) | 稼働中。Claude Code から作成。egress 制約前提の情報源設計（ADR 0008） |
