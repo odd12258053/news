@@ -41,3 +41,4 @@ docs/ADR/                      # 決定事項の記録 (Architecture Decision Re
 | name | 実行 | 状態 |
 |---|---|---|
 | weekly-ai-digest | 毎週金曜 17:00 JST (`0 8 * * 5` UTC) | 稼働中。Cowork 由来のため git clone なし |
+| weekly-python-rust-digest | 毎週月曜 08:00 JST (`0 23 * * 0` UTC) | 稼働中。Claude Code から作成（ADR 0007） |

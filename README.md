@@ -23,6 +23,7 @@ docs/ADR/           # 決定事項の記録。方針を決めたら必ず追加�
 | routine | 実行 | 概要 |
 |---|---|---|
 | [weekly-ai-digest](routines/weekly-ai-digest/) | 毎週金曜 17:00 JST | 直近 1 週間の AI 関連ニュースを英語一次情報から集め、日本語ダイジェストを Gmail で送る |
+| [weekly-python-rust-digest](routines/weekly-python-rust-digest/) | 毎週月曜 08:00 JST | 直近 1 週間の Python と Rust の言語・ライブラリ・コミュニティの動きを日本語ダイジェストで Gmail に送る |
 
 ## 更新の流れ（Claude Code 上で行う）
 

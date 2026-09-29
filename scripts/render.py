@@ -55,6 +55,18 @@ def main():
                                  "parent_tool_use_id": None,
                                  "message": {"role": "user", "content": prompt}}}],
         }}
+        # connector_uuid が書かれているコネクタだけを body に含める（uuid なしの項目は説明用）
+        conns = []
+        for c in cfg.get("mcp_connections") or []:
+            if not c.get("connector_uuid"):
+                continue
+            conn = {"connector_uuid": c["connector_uuid"], "name": c["name"], "url": c["url"]}
+            if c.get("always_allow_tools"):
+                conn["tool_policy_overrides"] = [
+                    {"name": t, "permission_policy": "always_allow"} for t in c["always_allow_tools"]]
+            conns.append(conn)
+        if conns:
+            body["mcp_connections"] = conns
     json.dump(body, sys.stdout, ensure_ascii=False, indent=2)
     print()
 

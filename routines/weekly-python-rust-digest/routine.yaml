@@ -1,0 +1,34 @@
+# 週刊 Python/Rust ダイジェスト
+# クラウド側の routine 定義。prompt 本体は同じディレクトリの prompt.md。
+# 変更したら CHANGELOG.md に「何を・なぜ」を書き、scripts/render.py で反映用 JSON を生成する。
+
+id: trig_01DWMeQiTPUCFd9wU6VnnqkP        # claude.ai 上の routine ID（公開しても無害。他者は自分の ID に置き換える）
+name: 週刊Python/Rustダイジェスト（月曜8:00）
+enabled: true
+
+schedule:
+  cron: "0 23 * * 0"                      # UTC。日曜 23:00 UTC = 月曜 08:00 JST
+  timezone_note: Asia/Tokyo 基準で月曜 08:00。前週月曜〜日曜の 7 日間を対象にする
+
+model: claude-fable-5-1
+
+# 新規作成時に使う実行環境と許可ツール（Claude Code の Default 環境。ADR 0007）
+environment_id: env_01JZgqWHmHCFqQkV1hS95esy
+allowed_tools:
+  - WebSearch
+  - WebFetch
+  - mcp__Gmail__send_message
+
+# prompt.md 内の {{KEY}} を置換する値。個人情報はここに寄せ、公開時は各自で書き換える。
+vars:
+  RECIPIENT_EMAIL: odd@agraffe.info
+
+# 接続する claude.ai コネクタ（connector_uuid は利用者ごとに異なる）
+mcp_connections:
+  - name: Gmail
+    purpose: ダイジェストの送信
+    connector_uuid: 3bc22160-6021-4d9b-8f5d-f3b1697abf01
+    url: https://gmailmcp.googleapis.com/mcp/v1
+    always_allow_tools: [send_message]
+
+origin: claude_code
