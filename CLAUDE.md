@@ -21,6 +21,9 @@ docs/ADR/                      # 決定事項の記録 (Architecture Decision Re
   差分そのものは git log で追えるので、CHANGELOG には判断の理由を残す。
 - **個人の値（メールアドレス等）は prompt.md に直接書かず、`{{KEY}}` と `vars` で分離する。**
   公開リポジトリなので、他者がそのまま再利用できる形を保つ。
+- **個人情報にあたる値をリポジトリに含める前に、必ず利用者に確認する（ADR 0006）。**
+  例外は `vars.RECIPIENT_EMAIL` の odd@agraffe.info（公開済みと確認済み）。
+  氏名・所属・他サービスの ID・URL など、迷ったら確認する側に倒す。確認結果は ADR か CHANGELOG に残す。
 - **クラウドへの反映は `README.md` の「更新の流れ」に従う。**
   routine の `job_config` は部分更新できないため、`RemoteTrigger get` の結果を
   `--current` に渡して prompt だけ差し替える。`*.current.json` はコミットしない。

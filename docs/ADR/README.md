@@ -37,3 +37,4 @@
 | [0003](0003-separate-personal-values-into-vars.md) | 個人の値を prompt から分離し vars で置換する | Accepted |
 | [0004](0004-record-change-reasoning-in-changelog.md) | 変更の理由を routine ごとの CHANGELOG に残す | Accepted |
 | [0005](0005-sync-by-swapping-prompt-into-cloud-job-config.md) | クラウド側の job_config を土台に prompt だけ差し替えて同期する | Accepted |
+| [0006](0006-personal-information-policy.md) | 個人情報の取り扱い方針 | Accepted |
