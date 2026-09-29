@@ -1,0 +1,31 @@
+# 週刊AIニュースダイジェスト
+# クラウド側の routine 定義。prompt 本体は同じディレクトリの prompt.md。
+# 変更したら CHANGELOG.md に「何を・なぜ」を書き、scripts/render.py で反映用 JSON を生成する。
+
+id: trig_01URHfRPm3gcHShYjvHAMLB2        # claude.ai 上の routine ID（公開しても無害。他者は自分の ID に置き換える）
+name: 週刊AIニュースダイジェスト（金曜17:00）
+enabled: true
+
+schedule:
+  cron: "0 8 * * 5"                       # UTC。金曜 08:00 UTC = 金曜 17:00 JST
+  timezone_note: Asia/Tokyo 基準で金曜 17:00
+
+model: claude-fable-5-1
+
+# prompt.md 内の {{KEY}} を置換する値。個人情報はここに寄せ、公開時は各自で書き換える。
+vars:
+  RECIPIENT_EMAIL: odd@agraffe.info
+
+# 接続する claude.ai コネクタ（connector_uuid は利用者ごとに異なる）
+mcp_connections:
+  - name: Gmail
+    purpose: ダイジェストの送信
+    always_allow_tools: [send_message]
+  - name: Claude_Docs
+    purpose: 未使用（Cowork 作成時のデフォルト）
+  - name: Claude_Code_Remote
+    purpose: 未使用（Cowork 作成時のデフォルト）
+
+# 参考: この routine は claude.ai の Cowork から作成されたため、
+# git リポジトリの clone は行わず、環境は Cowork 用の既定環境を使っている。
+origin: cowork_task
