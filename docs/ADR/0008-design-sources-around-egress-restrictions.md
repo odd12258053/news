@@ -26,3 +26,6 @@ routine の prompt を書くときは、次を標準とする。
 - 既存の週刊 Python/Rust ダイジェストと週刊 AI ダイジェストの prompt は未適用。次回改訂時に同じ節を追加する。
   ただし AI ダイジェストは Cowork 環境で動いており、egress 制約が同じかは未確認。
 - 環境側の制約が変わった場合（許可ドメインの追加など）は、この節を更新する。
+- 2026-09-30 の週刊セキュリティダイジェスト初回実行で追加判明: GitHub REST API はセッションに設定されたリポジトリ以外は使えない。
+  GitHub 上のソースは Web ページ経由（`/advisories/GHSA-...`, `/releases`, `/security/advisories`, `/pull/<n>`）で読む。
+  `blob/main/...` のファイル表示ページは本文を取れないことがあるため、Releases や PR ページを優先する。

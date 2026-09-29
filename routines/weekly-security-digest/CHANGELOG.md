@@ -17,3 +17,19 @@
 - 件数は合計 12〜16 件に上限を設けた。Python/Rust ダイジェストが目標を超過したため「上限を守る」と明記。
 - 配信は金曜 21:00 JST（`0 12 * * 5` UTC）。週末前に一週間の脆弱性・インシデントを振り返る用途。
 - クラウド側に作成済み（routine ID: trig_01Sn48rm1Tt2UZK3xkgcACeJ）。定期実行の初回は 2026-10-02 金曜 21:01 JST。作成直後に手動実行し、結果は下に追記する。
+
+### 結果: 2026-09-30 00:54 JST 手動実行（初回）
+
+- 成功。所要 669 秒、111 ターン。Gmail 送信まで完了。
+- 掲載件数: 15 件（目標 12〜16 件の範囲内）。「要対応」トップ 3 は Citrix NetScaler ゼロデイ（CVE-2026-88771 / 88772）、MemTensor の npm / PyPI 乗っ取り、Mini Shai-Hulud に汚染された GitHub Actions の再有効化。
+- **ADR 0008 の効果**: ブロックされたドメインへの再試行はなくなり、Python/Rust ダイジェストより無駄な WebFetch が減った。ターン数も 161 → 111。
+  本文未確認の記事には「（検索要約に基づく）」が付いていた。
+- 新たに判明した制約:
+  - GitHub REST API (`api.github.com/advisories`, `/repos/<owner>/<repo>/commits`) は「セッションに設定されたリポジトリ以外は使えない」と拒否される。
+    Advisory Database は Web ページ (`github.com/advisories/GHSA-...`) 経由なら読める。
+  - GitHub 上でも `blob/main/CHANGELOG.md` のようなファイル表示ページは、WebFetch がナビゲーション部分しか取れず本文を読めないことがある。
+    `releases`、`security/advisories`、`pull/<n>` のページは読めた。
+  - github.blog、docs.gitlab.com、socket.dev、rapid7.com、safedep.io もブロック対象。
+- 途中で応答が途切れて再開する事象が 1 回あった（HTML 作成中）。結果には影響なし。
+- 課題: 「GitHub 上のソース」の指示は、API ではなく Web ページに限る旨を明記した方がよい。次回改訂で prompt に反映する。
+
