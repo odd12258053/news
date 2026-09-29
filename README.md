@@ -15,6 +15,7 @@ routines/<routine名>/
   prompt.md      # エージェントへの指示（本体）。{{KEY}} は routine.yaml の vars で置換
   CHANGELOG.md   # 「何を・なぜ変えたか」の記録。差分そのものは git log で追う
 scripts/render.py   # yaml + prompt から API に渡す JSON を生成
+docs/ADR/           # 決定事項の記録。方針を決めたら必ず追加する
 ```
 
 ## routine 一覧
