@@ -28,4 +28,8 @@
 - AI ダイジェスト（Cowork 由来）と新規 routine で `job_config` の形が異なる。AI ダイジェストの更新は
   引き続き ADR 0005 の `--current` 方式、新規 routine は create/update ともファイルから直接 render できる。
 - 将来 AI ダイジェストもこの構成に揃える場合は、再作成になる（update で環境は変えられるが、Cowork 固有設定を消す判断が必要）。
-- Default 環境で `WebSearch` / `WebFetch` が使えることは、初回実行の結果で確認する。
+- Default 環境で `WebSearch` / `WebFetch` が使えることは、2026-09-30 の初回手動実行で確認した。
+  ただし egress proxy により多くの外部サイト（公式ブログや掲示板を含む）への WebFetch がブロックされる。
+  GitHub と pypi.org は通る。prompt の情報源は GitHub 上のミラーを優先させる必要がある
+  （詳細は routines/weekly-python-rust-digest/CHANGELOG.md）。
+- `allowed_tools` に書かなくても Bash は使える。ツール制限は「追加で許可するもの」の指定であり、完全な allowlist ではない。
